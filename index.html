@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>易经解读 · 观卦知几</title>
+<meta name="description" content="离线可用的易经解读应用：三枚铜钱起卦、六十四卦经文白话、六爻纳甲装卦。">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#home">
+      <span class="brand-symbol" aria-hidden="true">䷀</span>
+      <span class="brand-text">易经解读<small>观其象 · 玩其辞</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#home" data-nav="home">起卦</a>
+      <a href="#browse" data-nav="browse">六十四卦</a>
+      <a href="#history" data-nav="history">占例</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container" id="app">
+
+  <!-- ============ 起卦页 ============ -->
+  <section id="view-home" class="view" hidden>
+    <div class="hero">
+      <h1>诚心默念所问之事<br>掷三枚铜钱六次，以成卦象</h1>
+      <p class="muted">心诚则灵，一事一占。起卦后自动推演本卦、变卦与动爻，并依朱子《易学启蒙》之法取断辞。</p>
+    </div>
+
+    <div class="card ask-card">
+      <label for="question" class="ask-label">所问之事（可留空，用于六爻选用神）</label>
+      <input id="question" type="text" maxlength="60" placeholder="例如：问事业，近期升迁机会如何">
+      <div class="toss-area">
+        <div class="coins" id="coins">
+          <div class="coin" data-coin="0"><span class="coin-face">乾</span></div>
+          <div class="coin" data-coin="1"><span class="coin-face">坤</span></div>
+          <div class="coin" data-coin="2"><span class="coin-face">元</span></div>
+        </div>
+        <p class="toss-status" id="toss-status">静心凝神，点击下方按钮开始</p>
+        <div class="toss-progress" id="toss-progress"></div>
+        <button class="btn btn-primary" id="btn-toss">掷 钱 成 卦</button>
+      </div>
+      <div class="built-lines" id="built-lines" hidden>
+        <!-- 逐爻生成展示 -->
+      </div>
+    </div>
+
+    <div class="home-tips">
+      <div class="tip">
+        <h3>铜钱起卦法</h3>
+        <p>三枚铜钱同掷：三背为老阳（○），三字为老阴（×），二者皆动；一背二字为少阳，二背一字为少阴，是谓静爻。</p>
+      </div>
+      <div class="tip">
+        <h3>断卦之要</h3>
+        <p>六爻安动静：一爻动看动爻辞，无动爻看卦辞，六爻全动则乾坤有用九用六。变卦示事之终，本卦示事之始。</p>
+      </div>
+      <div class="tip">
+        <h3>六爻纳甲</h3>
+        <p>装卦以京房八宫定世应、纳甲干支、配六亲六神，用神旺衰参断吉凶趋时，适于具体事项之问。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 卦库浏览 ============ -->
+  <section id="view-browse" class="view" hidden>
+    <div class="browse-bar">
+      <h1>六十四卦</h1>
+      <input id="search" type="search" placeholder="搜卦名 / 全称 / 上下卦，如：乾、既济、风水" autocomplete="off">
+    </div>
+    <div class="palace-groups" id="browse-list">
+      <!-- JS 渲染：按宫分组 -->
+    </div>
+  </section>
+
+  <!-- ============ 卦详情（浏览） ============ -->
+  <section id="view-hexagram" class="view" hidden>
+    <div class="detail" id="hexagram-detail"><!-- JS 渲染 --></div>
+  </section>
+
+  <!-- ============ 解读结果 ============ -->
+  <section id="view-result" class="view" hidden>
+    <div id="result-root"><!-- JS 渲染 --></div>
+  </section>
+
+  <!-- ============ 占例历史 ============ -->
+  <section id="view-history" class="view" hidden>
+    <div class="browse-bar">
+      <h1>占例</h1>
+      <button class="btn btn-ghost" id="btn-clear-history">清空占例</button>
+    </div>
+    <div id="history-list"><!-- JS 渲染 --></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>经文取通行本《周易》（公版古籍），白话解读与装卦引擎为本项目撰写 · 数据经 GitHub 开源数据集交叉校验</p>
+    <p class="muted">易经为古人观物取象之智，占以决疑，不以代思。重大决策请咨询专业人士。</p>
+  </div>
+</footer>
+
+<!-- 数据与引擎（顺序加载，file:// 直接可用） -->
+<script src="js/data/najia.js"></script>
+<script src="js/data/hexagrams-1.js"></script>
+<script src="js/data/hexagrams-2.js"></script>
+<script src="js/data/hexagrams-3.js"></script>
+<script src="js/data/hexagrams-4.js"></script>
+<script src="js/core/divination.js"></script>
+<script src="js/core/najia-engine.js"></script>
+<script src="js/core/interpret.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
