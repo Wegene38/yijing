@@ -1,6 +1,9 @@
 # 易经解读 · 观卦知几
 
-零依赖、可离线的易经解读 Web 应用。纯 HTML + CSS + 原生 JavaScript，**双击 `index.html` 即可使用**，也适合部署到 GitHub Pages。
+**🌐 在线使用：<https://wegene38.github.io/yijing/>**（GitHub Pages 托管，手机电脑均可打开）
+
+零依赖、可离线的易经解读 Web 应用（PWA）。纯 HTML + CSS + 原生 JavaScript，
+**双击 `index.html` 即可使用**，也可添加到手机主屏幕像 App 一样全屏离线使用。
 
 ## 功能
 
@@ -37,6 +40,9 @@ node scripts/test-engine.js # 引擎单测：干支纪日锚点、装卦（乾�
 
 ```
 ├── index.html            # 单页入口
+├── manifest.webmanifest  # PWA 清单（添加到主屏幕）
+├── sw.js                 # Service Worker（离线缓存）
+├── icons/                # 应用图标（乾卦六爻设计）
 ├── css/style.css         # 宣纸·水墨·朱砂中国风主题，响应式
 ├── js/
 │   ├── data/
@@ -50,6 +56,22 @@ node scripts/test-engine.js # 引擎单测：干支纪日锚点、装卦（乾�
 ├── scripts/              # Node 校验与单测
 └── reference/            # 交叉校验用的开源数据快照
 ```
+
+## 手机上像 App 一样使用（添加到主屏幕）
+
+用手机浏览器打开 <https://wegene38.github.io/yijing/>，然后：
+
+**iPhone / iPad（Safari）**
+1. 点底部「分享」按钮（方形带向上箭头）
+2. 选择「添加到主屏幕」→ 确定
+3. 主屏幕出现「易经解读」图标，点击即可全屏打开，**无网络时也能用**
+
+**Android（Chrome / Edge 等）**
+1. 打开网页后，浏览器菜单（⋮）中选「安装应用」或「添加到主屏幕」
+2. 桌面出现应用图标，打开即为独立全屏窗口
+
+首次在线打开一次后，Service Worker 会把全部卦书数据缓存到本地，之后
+飞行模式下照常起卦、查卦、看占例。
 
 ## 部署到 GitHub Pages
 
